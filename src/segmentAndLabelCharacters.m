@@ -6,7 +6,7 @@ end
 
 
 % Label connected components (characters)
-[labeledComponents, numComponents] = bwlabel(binaryImage, 8); % 8-connectivity
+[labeledComponents, numComponents] = bwlabel(binaryImage, 4); % 8-connectivity
 
 % Create a colormap with distinct colors for each component
 colormap = rand(numComponents, 3); % Generate random RGB colors

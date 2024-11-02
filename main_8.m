@@ -5,8 +5,8 @@ folder_path = 'data/p_dataset_26';
 letters = {'D', 'E', 'H', 'L', 'O', 'W', 'R'};
 
 % Define parameter ranges for grid search
-num_neighbors_range = 1:2:9;
-resize_sizes = 64:64:256;  % step-64
+num_neighbors_range = [1, 2, 3, 4, 5, 8];
+resize_sizes = [16, 32, 64, 128, 256];
 
 % Initialize best parameters
 best_accuracy = 0;
@@ -40,7 +40,9 @@ for k_idx = 1:length(num_neighbors_range)
                 if size(img, 3) == 3
                     img = rgb2gray(img);
                 end
-                img = imresize(img, [resize_size resize_size]);
+                if resize_size ~= 128
+                    img = imresize(img, [resize_size resize_size]);
+                end
                 img = double(img);
                 
                 % Convert image to vector
