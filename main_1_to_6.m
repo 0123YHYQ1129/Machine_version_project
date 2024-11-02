@@ -42,17 +42,17 @@ title('Binary Image');
 binaryImagePath = 'results/binary_image.png';
 imwrite(binaryImage, binaryImagePath);
 
-% Skeletonize the binary image using Lee's algorithm
-skeletonImage = skeletonize(binaryImage, 'lee');
+% Thin the binary image using Lee's algorithm/Zhang-Suen algorithm
+thinImage = thin(binaryImage, 'lee');
 
 % Display the skeleton image
 figure;
-imshow(skeletonImage);
-title('Skeleton Image');
+imshow(thinImage);
+title('Lee');
 
 % Save the skeleton image
-skeletonImagePath = 'results/skeleton_image.png';
-imwrite(skeletonImage, skeletonImagePath);
+thinImagePath = 'results/thin_image.png';
+imwrite(thinImage, thinImagePath);
 
 % Find contours in the binary image
 contours = find_contours(binaryImage);
